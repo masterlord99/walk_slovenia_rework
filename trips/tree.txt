@@ -1,0 +1,105 @@
+Trip Tree Structure
+===================
+
+Each level is organized into clickable categories (max 5).
+Numbers reference trip IDs within their level file.
+
+
+LEVEL 1 — Easy Activities (24 trips → 5 categories)
+-----------------------------------------------------
+
+Castles & Historic Towns
+  1.  Predjama Castle
+  2.  Snežnik Castle
+  7.  Ljubljana Castle
+  8.  Celje Castle
+  24. Ptuj — Slovenia's Oldest Town
+
+City Life & Culture
+  5.  Ljubljana Old Town
+  6.  Maribor Old Town
+  9.  Ljubljana Museums
+  10. Metelkova Mesto & Museum of Contemporary Art
+
+Underground Worlds
+  15. Postojna Cave
+  16. Škocjan Caves
+  17. Velenje Coal Mining Museum & Velenje Lake
+  18. Idrija Mercury Mine
+
+Lakes, Valleys & Nature
+  19. Lake Bled & Bled Castle
+  20. Lake Bohinj
+  21. Lake Jasna & Kranjska Gora
+  23. Logarska Dolina (Logar Valley)
+  3.  Stroll Around Stari Vrh
+  4.  Rakov Škocjan Nature Reserve
+
+Adriatic Coast & Wine
+  11. Lipica Stud Farm
+  12. Strunjan Horse Farm & Nature Reserve
+  13. Salt Museum, Saltpans & Piran
+  14. Koper Old Town & Izola Harbour
+  22. Brda Wine Region
+
+
+LEVEL 2 — Active Experiences (28 trips → 5 categories)
+-------------------------------------------------------
+
+Gorges, Waterfalls & Springs
+  1.  Mostnica Gorge
+  2.  Tolmin Gorge
+  3.  Vintgar Gorge
+  4.  Rinka Waterfall & Logarska Dolina
+  10. Savica Waterfall
+  11. Peričnik Waterfall & Vrata Valley
+  25. Source of the Kamniška Bistrica
+  26. Zelenci — Source of the Sava Dolinka
+  27. Source of the Sava Bohinjka
+  28. Source of the Bohinjska Bistrica
+
+High Alpine Experiences
+  6.  Velika Planina Alpine Plateau
+  7.  Krvavec Alpine Plateau
+  13. Mangart Saddle — High Ridge Walk
+  14. Nanos Plateau
+
+River, Lake & Coastal Trails
+  5.  Lake Bled Circular Walk
+  8.  Slovenian Coastal Cliff Path (Strunjan to Piran)
+  9.  Muggia to Trieste Coastal Path
+  16. Soča Trail
+  17. Nadiža River Walk
+
+Summit & Ridge Hikes
+  12. Ljubelj to Zelenica Mountain Hut
+  15. Monte Sabotino — WWI Ridge Walk
+  18. Šmarna Gora — Ljubljana's Mountain
+  24. Lubnik above Škofja Loka
+
+Adventure & Sport
+  19. Rafting the Soča River
+  20. Kayaking the Soča River
+  21. E-Bike through the Vipava Valley
+  22. E-Bike through the Brda Wine Hills
+  23. Zipline Dolinka
+
+
+LEVEL 3 — Challenging (10 trips → 3 categories)
+-------------------------------------------------
+
+Mountain Summits
+  1.  Kofce & Košuta — Karavanke Hike
+  2.  Golica — The Daffodil Mountain
+  3.  Stol — Highest Peak of the Slovenian Karavanke
+  9.  Blegoš — Summit Hike from the Hotel
+
+Alpine Valley Expeditions
+  6.  Logarska Dolina — Full Valley Hike to Rinka & Beyond
+  7.  Kamniško Sedlo — Kamnik-Savinja Alps
+  10. Robanov Kot — Remote Alpine Valley Hike
+
+Guided Adrenaline
+  4.  Canyoning in Bovec
+  5.  Sušec & Fratarica Canyon — Advanced Canyoning
+  8.  Via Ferrata Prisank — Vršič Pass

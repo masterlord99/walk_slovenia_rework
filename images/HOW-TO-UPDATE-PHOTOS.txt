@@ -1,0 +1,177 @@
+=====================================================
+   HOW TO UPDATE PHOTOS ON THE WALK SLOVENIA WEBSITE
+=====================================================
+
+This guide explains how to replace the placeholder (grey) images
+with your own real photos. No coding needed — just rename and
+replace files.
+
+
+WHAT YOU NEED
+-------------
+- Your photos (any .jpg photos from your phone or camera work fine)
+- A file manager (the "Files" app on your computer)
+
+
+WHERE THE PHOTOS LIVE
+---------------------
+All photos are inside the "images" folder on your Desktop:
+
+   Desktop > webpage > images
+
+Inside "images" you will see folders organized exactly like the
+website:
+
+   images/
+   ├── home/                        <-- Homepage background photos
+   ├── easy-activities/             <-- Level 1 background photos
+   │   ├── castles-historic-towns/  <-- Category background photos
+   │   │   ├── predjama-castle/     <-- Trip photos
+   │   │   ├── sneznik-castle/
+   │   │   └── ...
+   │   ├── city-life-and-culture/
+   │   └── ...
+   ├── active-experiences/          <-- Level 2
+   └── challenging-adventures/      <-- Level 3
+
+
+HOW THE FILES ARE NAMED
+-----------------------
+Every photo file has a descriptive name so you know what it is:
+
+   predjama-castle-1.jpg    <-- First photo of Predjama Castle
+   predjama-castle-2.jpg    <-- Second photo
+   predjama-castle-3.jpg    <-- Third photo
+   predjama-castle-4.jpg    <-- Fourth photo
+
+Files with "hero" in the name are the big background images that
+cycle at the top of each page:
+
+   easy-activities-hero-1.jpg   <-- First cycling background
+   easy-activities-hero-2.jpg   <-- Second cycling background
+   (and so on...)
+
+
+STEP-BY-STEP: HOW TO REPLACE A PHOTO
+-------------------------------------
+
+Example: You want to replace the first photo of Predjama Castle.
+
+1. Find your real photo on your computer
+   (e.g. "IMG_4523.jpg" from your phone)
+
+2. Open the file manager and go to:
+   Desktop > webpage > images > easy-activities >
+   castles-historic-towns > predjama-castle
+
+3. You will see these files:
+   predjama-castle-1.jpg
+   predjama-castle-2.jpg
+   predjama-castle-3.jpg
+   predjama-castle-4.jpg
+
+4. DELETE the file you want to replace:
+   Right-click "predjama-castle-1.jpg" > Delete
+
+5. COPY your real photo into this folder:
+   Copy "IMG_4523.jpg" and paste it here
+
+6. RENAME your photo to match the old name:
+   Right-click "IMG_4523.jpg" > Rename
+   Type: predjama-castle-1.jpg
+   Press Enter
+
+7. Done! Open the website in your browser to see the change.
+   (You may need to refresh the page with Ctrl+R or F5)
+
+
+IMPORTANT RULES
+---------------
+
+Rule 1: THE FILENAME MUST STAY EXACTLY THE SAME
+   The website looks for specific filenames. If the file is called
+   "predjama-castle-1.jpg" your replacement must also be called
+   "predjama-castle-1.jpg" — not "Predjama Castle 1.jpg" or
+   "predjama-castle-1.JPG" or anything else.
+
+Rule 2: THE FILE MUST BE A .jpg IMAGE
+   If your photo is a .png or .heic, you need to convert it first.
+   The easiest way: open it in any image viewer, click
+   "Save As" or "Export", and choose JPEG/JPG format.
+
+Rule 3: USE LANDSCAPE (WIDE) PHOTOS
+   The website displays photos in wide format. Photos taken with
+   your phone held sideways (landscape) will look best.
+   Portrait (tall) photos will work but may get cropped.
+
+Rule 4: BIGGER IS BETTER
+   Use the largest version of your photos. The website will
+   automatically scale them down. Small photos will look blurry.
+   Ideal size: at least 1600 pixels wide.
+
+
+QUICK REFERENCE: WHAT EACH FOLDER IS FOR
+-----------------------------------------
+
+images/home/
+   -> The 5 big cycling background photos on the homepage
+   -> These are the first thing visitors see
+
+images/easy-activities/
+   -> 5 background photos for the "Easy Activities" level page
+   -> Plus subfolders for each category and trip
+
+images/active-experiences/
+   -> 5 background photos for the "Active Experiences" level page
+   -> Plus subfolders for each category and trip
+
+images/challenging-adventures/
+   -> 5 background photos for the "Challenging Adventures" level page
+   -> Plus subfolders for each category and trip
+
+Inside each level folder, you will find CATEGORY folders:
+   e.g. "castles-historic-towns", "city-life-and-culture", etc.
+   -> Each has 5 hero background photos for that category page
+
+Inside each category folder, you will find TRIP folders:
+   e.g. "predjama-castle", "lake-bled", "mostnica-gorge", etc.
+   -> Each has 4 photos for that specific trip
+
+
+HOW MANY PHOTOS DO I NEED?
+---------------------------
+- Homepage:           5 photos  (home-hero-1.jpg to home-hero-5.jpg)
+- Each level:         5 photos  (e.g. easy-activities-hero-1.jpg to 5)
+- Each category:      5 photos  (e.g. castles-historic-towns-hero-1.jpg to 5)
+- Each trip:          4 photos  (e.g. predjama-castle-1.jpg to 4)
+
+Total: 333 photos to replace everything.
+
+TIP: Start with the homepage photos (images/home/) and the
+level hero photos — those have the biggest visual impact.
+You can replace the rest over time.
+
+
+TROUBLESHOOTING
+---------------
+
+"I replaced a photo but the website still shows the old one"
+   -> Press Ctrl+R (or F5) to refresh the page
+   -> If that doesn't work, press Ctrl+Shift+R to force refresh
+
+"My photo looks stretched or cropped weird"
+   -> Use a landscape (wide) photo instead of a portrait (tall) one
+
+"The photo doesn't show up at all"
+   -> Check the filename is exactly right (no spaces, no capitals
+      where there shouldn't be, ends in .jpg not .JPG)
+   -> Make sure the file is actually a JPEG image
+
+"I want more than 4 photos for a trip"
+   -> This requires editing the code (js/data.js). Ask your
+      developer to add more image slots.
+
+"I want fewer photos for a trip"
+   -> Just leave the extra placeholder files as they are, or
+      replace them all with your best photos. Having duplicates
+      is fine.

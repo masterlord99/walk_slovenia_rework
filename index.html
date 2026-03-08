@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walk Slovenia</title>
+  <meta name="description" content="Walk Slovenia. Shown by locals. Seen by few. Discover 62 curated trips — from easy castle visits to challenging alpine summits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#/" class="site-logo">Walk Slovenia</a>
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+    </div>
+  </header>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Loading experiences...</p>
+  </div>
+
+  <!-- ═══ VIEW: Home ═══ -->
+  <main>
+    <section class="view" id="viewHome">
+      <div class="hero" id="heroHome">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-title">Walk Slovenia.<br>Shown by locals.<br>Seen by few.</h1>
+          <div class="hero-scroll-hint">
+            <span>Explore</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container">
+          <h2 class="section-heading">Choose Your Adventure Level</h2>
+          <div class="level-cards" id="levelCards"></div>
+        </div>
+      </div>
+      <section class="hotel-section">
+        <div class="container">
+          <h2 class="section-heading">Where It All Begins</h2>
+          <p class="hotel-subtitle">A 16th-century monastery in the Škofjeloka hills — your home between trails.</p>
+          <div class="hotel-cards reveal-stagger">
+            <div class="level-card reveal" data-href="#/hotel/estate">
+              <div class="level-card-image" style="background-image: url(hotel_image/hotel.jpg)"></div>
+              <div class="level-card-gradient"></div>
+              <div class="level-card-content">
+                <h3 class="level-card-title">Estate</h3>
+                <p class="level-card-subtitle">A 16th-century monastery nestled in the Škofjeloka hills</p>
+              </div>
+            </div>
+            <div class="level-card reveal" data-href="#/hotel/rooms">
+              <div class="level-card-image" style="background-image: url(hotel_image/rooms/room1.jpg)"></div>
+              <div class="level-card-gradient"></div>
+              <div class="level-card-content">
+                <h3 class="level-card-title">Rooms</h3>
+                <p class="level-card-subtitle">Timber beams, stone floors, and the quiet of thick monastery walls</p>
+              </div>
+            </div>
+            <div class="level-card reveal" data-href="#/hotel/spa">
+              <div class="level-card-image" style="background-image: url(hotel_image/spa/sauna.jpg)"></div>
+              <div class="level-card-gradient"></div>
+              <div class="level-card-content">
+                <h3 class="level-card-title">Spa</h3>
+                <p class="level-card-subtitle">Sauna and wellness to recover after a day on the trails</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ═══ VIEW: Level ═══ -->
+    <section class="view" id="viewLevel">
+      <div class="hero" id="heroLevel">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-label" id="levelLabel"></p>
+          <h1 class="hero-title" id="levelTitle"></h1>
+          <p class="hero-subtitle" id="levelSubtitle"></p>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container">
+          <div class="back-link" id="levelBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>All Levels</span>
+          </div>
+          <div class="category-cards" id="categoryCards"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VIEW: Category ═══ -->
+    <section class="view" id="viewCategory">
+      <div class="hero" id="heroCategory">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-label" id="categoryLabel"></p>
+          <h1 class="hero-title" id="categoryTitle"></h1>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container">
+          <div class="back-link" id="categoryBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+          </div>
+          <div class="trip-cards" id="tripCards"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VIEW: Trip Detail ═══ -->
+    <section class="view" id="viewTrip">
+      <div class="hero" id="heroTrip">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-label" id="tripLabel"></p>
+          <h1 class="hero-title" id="tripTitle"></h1>
+          <div class="hero-dots" id="tripDots"></div>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container trip-detail-container">
+          <div class="back-link" id="tripBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+          </div>
+          <div class="trip-detail" id="tripDetail">
+            <div class="trip-metadata" id="tripMetadata"></div>
+            <div class="trip-description" id="tripDescription"></div>
+          </div>
+          <div class="trip-gallery" id="tripGallery"></div>
+          <div class="trip-nav" id="tripNav"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VIEW: Hotel Detail ═══ -->
+    <section class="view" id="viewHotel">
+      <div class="hero" id="heroHotel">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-label" id="hotelLabel">The Monastery</p>
+          <h1 class="hero-title" id="hotelTitle"></h1>
+          <div class="hero-dots" id="hotelDots"></div>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container trip-detail-container">
+          <div class="back-link" id="hotelBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+          </div>
+          <div class="trip-gallery" id="hotelGallery"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Curated with care for our hotel guests</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
