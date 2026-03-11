@@ -5,10 +5,11 @@
   'use strict';
 
   // ─── State ────────────────────────────────────────────────
-  let currentView = null;   // 'home' | 'level' | 'category' | 'trip' | 'hotel'
-  let currentRoute = {};    // { levelId, categoryId, tripId, hotelSection }
+  let currentView = null;   // 'home' | 'level' | 'category' | 'trip' | 'hotel' | 'hotelDetail' | 'team'
+  let currentRoute = {};    // { levelId, categoryId, tripId, hotelSection, hotelSubcat }
   const cyclers = {};       // active image cycling intervals keyed by hero element id
   let revealObserver = null;
+  let _scrollTarget = null; // element id to scroll to after view transition
 
   // ─── DOM refs ─────────────────────────────────────────────
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -20,6 +21,8 @@
     category: $('#viewCategory'),
     trip: $('#viewTrip'),
     hotel: $('#viewHotel'),
+    hotelDetail: $('#viewHotelDetail'),
+    team: $('#viewTeam'),
   };
 
   const header = $('#siteHeader');
@@ -150,6 +153,8 @@
 
     const parts = clean.split('/');
     if (parts[0] === 'hotel' && parts.length === 2) return { view: 'hotel', hotelSection: parts[1] };
+    if (parts[0] === 'hotel' && parts.length === 3) return { view: 'hotelDetail', hotelSection: parts[1], hotelSubcat: parts[2] };
+    if (parts[0] === 'team') return { view: 'team' };
     if (parts.length === 1) return { view: 'level', levelId: parts[0] };
     if (parts.length === 2) return { view: 'category', levelId: parts[0], categoryId: parts[1] };
     if (parts.length === 3) return { view: 'trip', levelId: parts[0], categoryId: parts[1], tripId: parts[2] };
@@ -174,8 +179,12 @@
       case 'category':
         navigate(`#/${parsed.levelId}`);
         break;
+      case 'hotelDetail':
+        navigate(`#/hotel/${parsed.hotelSection}`);
+        break;
       case 'level':
       case 'hotel':
+      case 'team':
         navigate('#/');
         break;
       default:
@@ -185,11 +194,15 @@
 
   function handleRoute() {
     const parsed = parseHash(window.location.hash);
-    const { view, levelId, categoryId, tripId, hotelSection } = parsed;
+    const { view, levelId, categoryId, tripId, hotelSection, hotelSubcat } = parsed;
 
     // Validate route data exists
     if (view === 'hotel') {
       if (!findHotelSection(hotelSection)) { navigate('#/'); return; }
+    }
+    if (view === 'hotelDetail') {
+      if (!findHotelSection(hotelSection)) { navigate('#/'); return; }
+      if (!findHotelSubcategory(hotelSection, hotelSubcat)) { navigate(`#/hotel/${hotelSection}`); return; }
     }
     if (view === 'level' || view === 'category' || view === 'trip') {
       if (!findLevel(levelId)) { navigate('#/'); return; }
@@ -201,7 +214,7 @@
       if (!findTrip(levelId, categoryId, tripId)) { navigate(`#/${levelId}/${categoryId}`); return; }
     }
 
-    currentRoute = { levelId, categoryId, tripId, hotelSection };
+    currentRoute = { levelId, categoryId, tripId, hotelSection, hotelSubcat };
     switchView(view);
   }
 
@@ -236,13 +249,13 @@
   let _lastRenderedRoute = '';
 
   function areRoutesEqual(view) {
-    const key = `${view}:${currentRoute.levelId || ''}:${currentRoute.categoryId || ''}:${currentRoute.tripId || ''}:${currentRoute.hotelSection || ''}`;
+    const key = `${view}:${currentRoute.levelId || ''}:${currentRoute.categoryId || ''}:${currentRoute.tripId || ''}:${currentRoute.hotelSection || ''}:${currentRoute.hotelSubcat || ''}`;
     if (key === _lastRenderedRoute) return true;
     return false;
   }
 
   function showIncoming(el, view) {
-    const routeKey = `${view}:${currentRoute.levelId || ''}:${currentRoute.categoryId || ''}:${currentRoute.tripId || ''}:${currentRoute.hotelSection || ''}`;
+    const routeKey = `${view}:${currentRoute.levelId || ''}:${currentRoute.categoryId || ''}:${currentRoute.tripId || ''}:${currentRoute.hotelSection || ''}:${currentRoute.hotelSubcat || ''}`;
     _lastRenderedRoute = routeKey;
 
     // Render content for this view
@@ -250,8 +263,14 @@
 
     // Show
     el.classList.add('active');
-    // Scroll to top before fade-in
-    window.scrollTo(0, 0);
+    // Scroll to target or top before fade-in
+    if (_scrollTarget) {
+      const target = document.getElementById(_scrollTarget);
+      if (target) target.scrollIntoView({ behavior: 'instant' });
+      _scrollTarget = null;
+    } else {
+      window.scrollTo(0, 0);
+    }
 
     requestAnimationFrame(() => {
       el.classList.add('fade-in', 'visible');
@@ -276,6 +295,8 @@
       case 'category': renderCategory(); break;
       case 'trip': renderTrip(); break;
       case 'hotel': renderHotel(); break;
+      case 'hotelDetail': renderHotelDetail(); break;
+      case 'team': renderTeam(); break;
     }
   }
 
@@ -309,9 +330,36 @@
     // Hotel cards
     const hotelContainer = $('.hotel-cards');
     if (hotelContainer) attachCardClicks(hotelContainer);
+
+    // Pricing grid
+    const pricingGrid = $('#pricingGrid');
+    if (pricingGrid) {
+      const rooms = HOTEL_DATA.rooms.subcategories;
+      pricingGrid.innerHTML = rooms.map((room) => `
+        <div class="pricing-card reveal" data-href="#/hotel/rooms/${room.id}">
+          <div class="pricing-card-image" style="background-image: url(${room.images[0]})"></div>
+          <h3 class="pricing-card-name">${room.title}</h3>
+          <p class="pricing-card-type">${room.type || ''}</p>
+          <p class="pricing-card-price">${room.price || 'TBD'} <span>/ night</span></p>
+        </div>
+      `).join('');
+      attachCardClicks(pricingGrid);
+    }
+
+    // Pricing email button
+    const pricingBtn = $('#pricingEmailBtn');
+    if (pricingBtn) {
+      pricingBtn.addEventListener('click', () => {
+        window.location.href = 'mailto:info@walkslovenia.com?subject=Booking inquiry';
+        navigator.clipboard.writeText('info@walkslovenia.com').catch(() => {});
+        const original = pricingBtn.innerHTML;
+        pricingBtn.textContent = 'Email copied — info@walkslovenia.com';
+        setTimeout(() => { pricingBtn.innerHTML = original; }, 3000);
+      });
+    }
   }
 
-  // — Hotel Detail View —
+  // — Hotel Section View (subcategory cards) —
   function renderHotel() {
     const section = findHotelSection(currentRoute.hotelSection);
     if (!section) return;
@@ -319,24 +367,72 @@
     $('#hotelLabel').textContent = 'The Monastery';
     $('#hotelTitle').textContent = section.title;
 
-    // Hero images + dots
+    // Hero cycles first image from each subcategory
+    const heroImages = section.subcategories.map((sub) => sub.images[0]);
     const heroEl = $('#heroHotel');
-    const dotsContainer = $('#hotelDots');
-    const cycler = startImageCycling(heroEl, section.images);
-    createDots(dotsContainer, section.images.length, (i) => {
-      if (cycler) cycler.goToImage(i);
-    });
+    startImageCycling(heroEl, heroImages);
 
     // Back link
     const backLink = $('#hotelBackLink');
     backLink.querySelector('span').textContent = 'Back';
-    backLink.onclick = () => navigate('#/');
+    backLink.onclick = () => { _scrollTarget = 'hotelHomeSection'; navigate('#/'); };
+
+    // Subcategory cards (same layout as adventure categories)
+    const container = $('#hotelSubcategories');
+    container.className = 'category-cards reveal-stagger';
+    container.innerHTML = section.subcategories.map((sub) => {
+      const cardImage = sub.images[0];
+      return `
+        <div class="category-card reveal" data-href="#/hotel/${section.id}/${sub.id}">
+          <div class="category-card-image-wrapper">
+            <div class="category-card-image" style="background-image: url(${cardImage})"></div>
+          </div>
+          <div class="category-card-body">
+            <h3 class="category-card-title">${sub.title}</h3>
+            <p class="category-card-count">${sub.images.length} photo${sub.images.length !== 1 ? 's' : ''}</p>
+            <span class="category-card-arrow">View <span>&rarr;</span></span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    attachCardClicks(container);
+  }
+
+  // — Hotel Detail View (gallery) —
+  function renderHotelDetail() {
+    const section = findHotelSection(currentRoute.hotelSection);
+    const subcat = findHotelSubcategory(currentRoute.hotelSection, currentRoute.hotelSubcat);
+    if (!section || !subcat) return;
+
+    $('#hotelDetailLabel').textContent = section.title;
+    $('#hotelDetailTitle').textContent = subcat.title;
+
+    // Hero images + dots
+    const heroEl = $('#heroHotelDetail');
+    const dotsContainer = $('#hotelDetailDots');
+    const cycler = startImageCycling(heroEl, subcat.images);
+    createDots(dotsContainer, subcat.images.length, (i) => {
+      if (cycler) cycler.goToImage(i);
+    });
+
+    // Back link
+    const backLink = $('#hotelDetailBackLink');
+    backLink.querySelector('span').textContent = section.title;
+    backLink.onclick = () => navigate(`#/hotel/${section.id}`);
+
+    // Description + price
+    let detailHtml = '';
+    if (subcat.description) detailHtml += `<p>${subcat.description}</p>`;
+    if (subcat.price) detailHtml += `<p class="room-price"><span class="room-price-label">${subcat.type || ''}</span> ${subcat.price} <span class="room-price-unit">/ night</span></p>`;
+    if (subcat.price) detailHtml += `<div class="room-book"><button class="team-cta-link copy-email-btn" data-room="${subcat.title}">Get in touch &rarr;</button></div>`;
+    $('#hotelDetailDescription').innerHTML = detailHtml;
 
     // Photo gallery
-    const galleryContainer = $('#hotelGallery');
-    galleryContainer.innerHTML = section.images.map((imgUrl, i) => `
+    const galleryContainer = $('#hotelDetailGallery');
+    galleryContainer.innerHTML = subcat.images.map((imgUrl, i) => `
       <div class="gallery-item reveal" data-index="${i}">
-        <img src="${imgUrl}" alt="${section.title} — photo ${i + 1}" loading="lazy">
+        <img src="${imgUrl}" alt="${subcat.title} — photo ${i + 1}" loading="lazy">
       </div>
     `).join('');
 
@@ -348,6 +444,39 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
+
+    // Email button — try mailto + copy to clipboard as fallback
+    const copyBtn = $('.copy-email-btn', $('#viewHotelDetail'));
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const room = copyBtn.dataset.room || '';
+        window.location.href = `mailto:info@walkslovenia.com?subject=Booking inquiry — ${room}`;
+        navigator.clipboard.writeText('info@walkslovenia.com').catch(() => {});
+        const original = copyBtn.innerHTML;
+        copyBtn.textContent = 'Email copied — info@walkslovenia.com';
+        setTimeout(() => { copyBtn.innerHTML = original; }, 3000);
+      });
+    }
+  }
+
+  // — Team View —
+  function renderTeam() {
+    const backLink = $('#teamBackLink');
+    backLink.querySelector('span').textContent = 'Back';
+    backLink.onclick = () => navigate('#/');
+
+    const container = $('#teamGrid');
+    container.className = 'team-grid reveal-stagger';
+    container.innerHTML = TEAM_DATA.map((member) => `
+      <div class="team-card reveal">
+        <div class="team-card-photo" style="background-image: url(${member.photo})"></div>
+        <div class="team-card-body">
+          <h3 class="team-card-name">${member.name}</h3>
+          <p class="team-card-role">${member.role}</p>
+          <p class="team-card-bio">${member.bio}</p>
+        </div>
+      </div>
+    `).join('');
   }
 
   // — Level View —
@@ -364,7 +493,7 @@
 
     // Back link
     const backLink = $('#levelBackLink');
-    backLink.onclick = () => navigate('#/');
+    backLink.onclick = () => { _scrollTarget = 'experiencesSection'; navigate('#/'); };
 
     const container = $('#categoryCards');
     container.className = 'category-cards reveal-stagger';
@@ -540,6 +669,18 @@
         parts.push({ label: 'The Monastery', href: null });
         parts.push({ label: section.title, href: null });
       }
+    }
+    if (view === 'hotelDetail') {
+      const section = findHotelSection(currentRoute.hotelSection);
+      const subcat = findHotelSubcategory(currentRoute.hotelSection, currentRoute.hotelSubcat);
+      if (section && subcat) {
+        parts.push({ label: 'The Monastery', href: null });
+        parts.push({ label: section.title, href: `#/hotel/${section.id}` });
+        parts.push({ label: subcat.title, href: null });
+      }
+    }
+    if (view === 'team') {
+      parts.push({ label: 'Meet the Team', href: null });
     }
     if (view === 'level' && level) {
       parts.push({ label: level.title, href: null });

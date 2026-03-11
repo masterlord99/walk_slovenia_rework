@@ -4,12 +4,12 @@
 
 /* ─── CSS Variables ────────────────────────────────────── */
 :root {
-  --color-bg: #0a0a0c;
-  --color-surface: #141418;
-  --color-surface-hover: #1c1c22;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text: #e8e6e3;
-  --color-text-muted: #9a9690;
+  --color-bg: #0e1012;
+  --color-surface: #161819;
+  --color-surface-hover: #1e2124;
+  --color-border: rgba(200, 210, 220, 0.1);
+  --color-text: #e0e2e5;
+  --color-text-muted: #8a9098;
   --color-accent: #c8a87c;
   --color-accent-hover: #d4b88e;
   --color-white: #ffffff;
@@ -228,9 +228,9 @@ button {
 /* ─── Hero Section ─────────────────────────────────────── */
 .hero {
   position: relative;
-  height: 50vh;
-  min-height: 320px;
-  max-height: 600px;
+  height: 60vh;
+  min-height: 380px;
+  max-height: 720px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -327,6 +327,17 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   animation: bounce 2s ease-in-out infinite;
+}
+.hero-tagline {
+  margin-top: 32px;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes bounce {
@@ -699,6 +710,11 @@ button {
   gap: 12px;
   margin-bottom: 48px;
 }
+.trip-gallery .gallery-item:only-child {
+  grid-column: 1 / -1;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 .gallery-item {
   border-radius: var(--radius-md);
@@ -800,9 +816,47 @@ button {
 .reveal-stagger > .reveal:nth-child(10) { transition-delay: 900ms; }
 
 /* ─── Hotel Section ────────────────────────────────────── */
-.hotel-section {
-  padding: 0 0 80px;
+/* ─── Intro Statement ──────────────────────────────────── */
+.intro-statement {
+  padding: 40px 0;
+  text-align: center;
   background: var(--color-bg);
+}
+.intro-text {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Golden vine pattern overlay for home sections */
+#viewHome .hotel-section,
+#viewHome .team-section,
+#viewHome .pricing-section,
+#viewHome .reviews-section {
+  position: relative;
+}
+
+#viewHome .hotel-section::before,
+#viewHome .team-section::before,
+#viewHome .pricing-section::before,
+#viewHome .reviews-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23c8a87c' stroke-width='0.9'%3E%3C!-- Central vine stem (S-curve baroque scroll) --%3E%3Cpath d='M150 0 C150 30 170 50 170 80 C170 110 130 130 130 160 C130 190 170 210 170 240 C170 270 150 290 150 300'/%3E%3C!-- Baroque volute scrolls --%3E%3Cpath d='M170 80 C190 75 205 85 208 100 C210 112 200 120 188 118 C178 116 175 108 180 100'/%3E%3Cpath d='M130 160 C110 155 95 165 92 180 C90 192 100 200 112 198 C122 196 125 188 120 180'/%3E%3Cpath d='M170 240 C190 235 205 245 208 260 C210 272 200 280 188 278 C178 276 175 268 180 260'/%3E%3C!-- Grape clusters --%3E%3Ccircle cx='210' cy='105' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='220' cy='112' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='215' cy='120' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='205' cy='115' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='212' cy='128' r='4' fill='%23c8a87c' fill-opacity='0.12'/%3E%3Ccircle cx='80' cy='185' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='70' cy='192' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='75' cy='200' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='85' cy='195' r='5' fill='%23c8a87c' fill-opacity='0.15'/%3E%3Ccircle cx='78' cy='208' r='4' fill='%23c8a87c' fill-opacity='0.12'/%3E%3C!-- Vine leaves --%3E%3Cpath d='M185 70 C195 60 210 62 215 72 C218 78 212 85 205 82 C198 80 192 72 185 70Z'/%3E%3Cpath d='M115 150 C105 140 90 142 85 152 C82 158 88 165 95 162 C102 160 108 152 115 150Z'/%3E%3Cpath d='M185 230 C195 220 210 222 215 232 C218 238 212 245 205 242 C198 240 192 232 185 230Z'/%3E%3C!-- Small cross accent --%3E%3Cline x1='40' y1='40' x2='40' y2='60'/%3E%3Cline x1='32' y1='48' x2='48' y2='48'/%3E%3Cline x1='260' y1='240' x2='260' y2='260'/%3E%3Cline x1='252' y1='248' x2='268' y2='248'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 300px 300px;
+}
+
+.hotel-section {
+  padding: 40px 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .hotel-subtitle {
@@ -823,6 +877,244 @@ button {
   gap: 24px;
 }
 
+/* ─── Team Section (Home) ──────────────────────────────── */
+.team-section {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ─── Pricing Section ──────────────────────────────────── */
+.pricing-section {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+.pricing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 880px;
+  margin: 32px auto;
+}
+.pricing-card {
+  flex: 0 1 calc((100% - 32px) / 3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 24px 16px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.pricing-card:hover {
+  border-color: var(--color-accent);
+}
+.pricing-card-image {
+  width: 100%;
+  aspect-ratio: 3/2;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.pricing-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+.pricing-card-type {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.pricing-card-price {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+.pricing-card-price span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+.pricing-note {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+.room-price {
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  text-align: center;
+}
+.room-price-label {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+}
+.room-book {
+  margin-top: 20px;
+  text-align: center;
+}
+button.team-cta-link {
+  background: none;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.room-price-unit {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+.team-cta {
+  margin-top: 24px;
+}
+.team-cta-link {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  text-decoration: none;
+  padding: 12px 32px;
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+.team-cta-link:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ─── Team Page ────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.team-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.team-card-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+}
+.team-card-body {
+  padding: 16px 16px 0;
+}
+.team-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+.team-card-role {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.team-card-bio {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Reviews & Awards ─────────────────────────────────── */
+.reviews-section {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+.reviews-score {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--color-text);
+  margin-bottom: 0;
+}
+.reviews-stars {
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  margin-left: 8px;
+}
+.reviews-count {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+.reviews-link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.reviews-link:hover {
+  text-decoration: underline;
+}
+.awards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.award-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 24px 32px;
+  min-width: 180px;
+}
+.award-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+.award-subtitle {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.award-year {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 /* ─── Footer ───────────────────────────────────────────── */
 .site-footer {
   padding: 40px 0;
@@ -830,6 +1122,31 @@ button {
   text-align: center;
   font-size: 0.85rem;
   color: var(--color-text-muted);
+}
+.footer-address {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.footer-contact-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.footer-contact-link:hover {
+  color: var(--color-accent);
+}
+.footer-contact {
+  margin-top: 8px;
+}
+.footer-contact a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+.footer-separator {
+  margin: 0 8px;
+  opacity: 0.5;
 }
 
 /* ─── Image fallback gradient ──────────────────────────── */
@@ -890,8 +1207,8 @@ button {
   }
 
   .hero {
-    height: 65vh;
-    min-height: 350px;
+    height: 75vh;
+    min-height: 400px;
   }
 
   .hero-scroll-hint {

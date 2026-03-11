@@ -41,18 +41,13 @@
               <path d="M12 5v14M19 12l-7 7-7-7"/>
             </svg>
           </div>
+          <p class="hero-tagline">Turn off your mind. Remember the rest.<br>We meet you at the airport — you just bring yourself.</p>
         </div>
       </div>
-      <div class="section-below-hero">
-        <div class="container">
-          <h2 class="section-heading">Choose Your Adventure Level</h2>
-          <div class="level-cards" id="levelCards"></div>
-        </div>
-      </div>
-      <section class="hotel-section">
+      <section class="hotel-section" id="hotelHomeSection">
         <div class="container">
           <h2 class="section-heading">Where It All Begins</h2>
-          <p class="hotel-subtitle">A 16th-century monastery in the Škofjeloka hills — your home between trails.</p>
+          <p class="hotel-subtitle">A 16th-century monastery in the foothills of the Julian Alps.<br>Your home between trails.</p>
           <div class="hotel-cards reveal-stagger">
             <div class="level-card reveal" data-href="#/hotel/estate">
               <div class="level-card-image" style="background-image: url(hotel_image/hotel.jpg)"></div>
@@ -63,7 +58,7 @@
               </div>
             </div>
             <div class="level-card reveal" data-href="#/hotel/rooms">
-              <div class="level-card-image" style="background-image: url(hotel_image/rooms/room1.jpg)"></div>
+              <div class="level-card-image" style="background-image: url(hotel_image/rooms/blegos/room1.jpg)"></div>
               <div class="level-card-gradient"></div>
               <div class="level-card-content">
                 <h3 class="level-card-title">Rooms</h3>
@@ -71,13 +66,64 @@
               </div>
             </div>
             <div class="level-card reveal" data-href="#/hotel/spa">
-              <div class="level-card-image" style="background-image: url(hotel_image/spa/sauna.jpg)"></div>
+              <div class="level-card-image" style="background-image: url(hotel_image/spa/sauna/sauna.jpg)"></div>
               <div class="level-card-gradient"></div>
               <div class="level-card-content">
                 <h3 class="level-card-title">Spa</h3>
                 <p class="level-card-subtitle">Sauna and wellness to recover after a day on the trails</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="hotel-section" id="experiencesSection">
+        <div class="container">
+          <h2 class="section-heading">Experiences Beyond the Guidebook</h2>
+          <p class="hotel-subtitle">Handpicked trails, summits, and adventures across Slovenia — guided by people who know them best.</p>
+          <div class="level-cards" id="levelCards"></div>
+        </div>
+      </section>
+      <section class="reviews-section">
+        <div class="container">
+          <h2 class="section-heading">Recognised & Reviewed</h2>
+          <p class="reviews-score">5.0 <span class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+          <p class="reviews-count"><a href="https://www.tripadvisor.com/Hotel_Review-g608963-d1160720-Reviews-Pri_Lenart_Hotel-Skofja_Loka_Upper_Carniola_Region.html" target="_blank" rel="noopener" class="reviews-link">Over 580 five-star reviews on TripAdvisor &rarr;</a></p>
+          <div class="awards-grid">
+            <div class="award-card reveal">
+              <p class="award-title">Travellers' Choice</p>
+              <p class="award-subtitle">Best of the Best</p>
+              <p class="award-year">TripAdvisor 2020</p>
+            </div>
+            <div class="award-card reveal">
+              <p class="award-title">Travellers' Choice</p>
+              <p class="award-subtitle">Best of the Best</p>
+              <p class="award-year">TripAdvisor 2019</p>
+            </div>
+            <div class="award-card reveal">
+              <p class="award-title">Excellence Award</p>
+              <p class="award-subtitle">Charme &amp; Caract&egrave;re</p>
+              <p class="award-year">2017</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pricing-section">
+        <div class="container">
+          <h2 class="section-heading">Pricing & Booking</h2>
+          <p class="hotel-subtitle">All rooms include breakfast, dinner, guided experiences, spa access, and airport transfers.</p>
+          <div class="pricing-grid" id="pricingGrid"></div>
+          <p class="pricing-note">For availability and reservations, get in touch.</p>
+          <div class="team-cta reveal">
+            <button class="team-cta-link copy-email-btn" id="pricingEmailBtn">Get in touch &rarr;</button>
+          </div>
+        </div>
+      </section>
+      <section class="team-section">
+        <div class="container">
+          <h2 class="section-heading">Meet the Team</h2>
+          <p class="hotel-subtitle">The locals who make it all happen.</p>
+          <div class="team-cta reveal">
+            <a href="#/team" class="team-cta-link">Meet the people behind your stay &rarr;</a>
           </div>
         </div>
       </section>
@@ -162,7 +208,24 @@
       </div>
     </section>
 
-    <!-- ═══ VIEW: Hotel Detail ═══ -->
+    <!-- ═══ VIEW: Team ═══ -->
+    <section class="view" id="viewTeam">
+      <div class="section-below-hero" style="padding-top: 120px;">
+        <div class="container">
+          <div class="back-link" id="teamBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+          </div>
+          <h2 class="section-heading">Meet the Team</h2>
+          <p class="hotel-subtitle">The people who make your stay personal.</p>
+          <div class="team-grid" id="teamGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VIEW: Hotel Section (subcategory cards) ═══ -->
     <section class="view" id="viewHotel">
       <div class="hero" id="heroHotel">
         <div class="hero-bg hero-bg-a"></div>
@@ -171,18 +234,45 @@
         <div class="hero-content">
           <p class="hero-label" id="hotelLabel">The Monastery</p>
           <h1 class="hero-title" id="hotelTitle"></h1>
-          <div class="hero-dots" id="hotelDots"></div>
         </div>
       </div>
       <div class="section-below-hero">
-        <div class="container trip-detail-container">
+        <div class="container">
           <div class="back-link" id="hotelBackLink">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
             <span>Back</span>
           </div>
-          <div class="trip-gallery" id="hotelGallery"></div>
+          <div class="category-cards" id="hotelSubcategories"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ VIEW: Hotel Detail (gallery) ═══ -->
+    <section class="view" id="viewHotelDetail">
+      <div class="hero" id="heroHotelDetail">
+        <div class="hero-bg hero-bg-a"></div>
+        <div class="hero-bg hero-bg-b"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-label" id="hotelDetailLabel">The Monastery</p>
+          <h1 class="hero-title" id="hotelDetailTitle"></h1>
+          <div class="hero-dots" id="hotelDetailDots"></div>
+        </div>
+      </div>
+      <div class="section-below-hero">
+        <div class="container trip-detail-container">
+          <div class="back-link" id="hotelDetailBackLink">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back</span>
+          </div>
+          <div class="trip-detail" id="hotelDetailContent">
+            <div class="trip-description" id="hotelDetailDescription"></div>
+          </div>
+          <div class="trip-gallery" id="hotelDetailGallery"></div>
         </div>
       </div>
     </section>
@@ -191,7 +281,13 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>Curated with care for our hotel guests</p>
+      <p><strong>Pri Lenart Chalet Hotel</strong></p>
+      <p class="footer-address"><a href="https://www.google.com/maps/search/?api=1&query=Pri+Lenart+Hotel+Podvrh+1+Poljane+nad+Skofjo+Loko+Slovenia" target="_blank" rel="noopener" class="footer-contact-link">Podvrh 1, Poljane nad Škofjo Loko, 4223 Slovenia</a></p>
+      <p class="footer-contact">
+        <a href="mailto:info@walkslovenia.com">info@walkslovenia.com</a>
+        <span class="footer-separator">·</span>
+        <a href="tel:+38612345678">+386 1 234 5678</a>
+      </p>
     </div>
   </footer>
 
