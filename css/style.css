@@ -1052,9 +1052,6 @@ button.team-cta-link {
   .pricing-grid {
     grid-template-columns: 1fr;
   }
-  .pricing-card {
-    flex: 0 1 100%;
-  }
 }
 
 /* ─── Reviews & Awards ─────────────────────────────────── */
@@ -1299,6 +1296,10 @@ button.team-cta-link {
   .trip-meta-badge {
     font-size: 0.8rem;
     padding: 6px 14px;
+  }
+
+  .pricing-card {
+    flex: 0 1 100%;
   }
 }
 
