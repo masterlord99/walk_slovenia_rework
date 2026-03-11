@@ -1052,6 +1052,9 @@ button.team-cta-link {
   .pricing-grid {
     grid-template-columns: 1fr;
   }
+  .pricing-card {
+    flex: 0 1 100%;
+  }
 }
 
 /* ─── Reviews & Awards ─────────────────────────────────── */
