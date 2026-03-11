@@ -577,7 +577,7 @@ const DATA = {
       level: 3,
       heroImages: [
         'images/challenging-adventures/challenging-adventures-hero-1.jpg',
-        'images/challenging-adventures/mountain-summits/blegos/Blegos-Pogled2.JPG',
+        'images/challenging-adventures/mountain-summits/blegos/7b-DSC02618-Panorama-small.jpg',
         'images/challenging-adventures/mountain-summits/stol/61a5cddaa7bd7-large.jpg',
       ],
       categories: [
@@ -588,7 +588,7 @@ const DATA = {
             'images/challenging-adventures/mountain-summits/kofce-kosuta/617478382488d-large.jpg',
             'images/challenging-adventures/mountain-summits/golica/golica-1.jpg',
             'images/challenging-adventures/mountain-summits/stol/61a5cddaa7bd7-large.jpg',
-            'images/challenging-adventures/mountain-summits/blegos/Blegos-Pogled2.JPG',
+            'images/challenging-adventures/mountain-summits/blegos/7b-DSC02618-Panorama-small.jpg',
             'images/challenging-adventures/mountain-summits/dolge-njive/6173db842b3dd-large.jpg',
             'images/challenging-adventures/mountain-summits/kalski-greben/61f4fc59d9dcb-large.jpg',
           ],
@@ -640,7 +640,6 @@ const DATA = {
                 'images/challenging-adventures/mountain-summits/blegos/5-DSC02580-Ko-se-veter-poigra-small.jpg',
                 'images/challenging-adventures/mountain-summits/blegos/7b-DSC02618-Panorama-small.jpg',
                 'images/challenging-adventures/mountain-summits/blegos/8-DSC02631-Proti-koči-small.jpg',
-                'images/challenging-adventures/mountain-summits/blegos/Blegos-Pogled2.JPG',
               ],
             },
             {
